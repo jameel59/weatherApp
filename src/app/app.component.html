@@ -1,0 +1,68 @@
+<div class="search">
+  <form #form ="ngForm" (submit) ="onSubmit()">
+    <input type="text" name="city" [(ngModel)]="cityName" id="" placeholder="Seach City ....">
+  </form>
+</div>
+<div class="container">
+  <div class="upperDiv">
+    <img src="../assets/day.png" alt="dayImage" srcset="" *ngIf= "isTemperatureGreaterThanFifteen()" >
+    <img src="../assets/night.jpg" alt="dayImage" srcset="" *ngIf= "!isTemperatureGreaterThanFifteen()" >
+
+      <div class="weatherData">
+        <div class="location">{{ weatherData?.name }}</div>
+        <div class="temp">{{ weatherData?.main?.temp | number: '1.0-0' }}°F</div>
+      </div>    
+
+  </div>
+  <div class="lowerDiv">
+    <div class="more-info-label">
+      <span>More Information</span> 
+    </div>
+    <div class="more-info-container">
+      
+      <div class="info-block">
+        <div class="info-block-label">
+          <img src="../assets/min.png" alt="min" >
+          <span>Min</span>
+        </div>
+        <div class="info-block-value">
+          {{weatherData?.main?.temp_min}}°F
+        </div>
+      </div>
+
+      <div class="info-block">
+        <div class="info-block-label">
+          <img src="../assets/max.png" alt="max" >
+          <span>Max</span>
+        </div>
+        <div class="info-block-value">
+          {{weatherData?.main?.temp_max}}°F
+        </div>
+      </div>
+
+      <div class="info-block">
+        <div class="info-block-label">
+          <img src="../assets/humidity.png" alt="Humidity" >
+          <span>Humidity</span>
+        </div>
+        <div class="info-block-value">
+          {{weatherData?.main?.humidity}}%
+        </div>
+      </div>
+
+      <div class="info-block">
+        <div class="info-block-label">
+          <img src="../assets/wind.png" alt="wind" >
+          <span>Wind</span>
+        </div>
+        <div class="info-block-value">
+          {{weatherData?.wind?.speed}} km/h
+        </div>
+      </div>
+
+    </div>
+
+  </div>
+
+</div>
+<router-outlet></router-outlet>
